@@ -1,0 +1,31 @@
+{
+  "name": "cucumber-playwright-ts",
+  "version": "0.0.1",
+  "description": "UI automation framework using Playwright, Cucumber-JS; TypeScript",
+  "author": "Seva Makhinia <makhinya@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lokiOdUa/cucumber-playwright-ts.git"
+  },
+  "scripts": {
+    "clean": "rm -f ./reports/cucumber_report.cucumber && rm -f ./reports/cucumber_report.json && rm -f ./reports/*.png",
+    "lint": "tslint -p tsco`nfig.json -c tslint.json",
+    "report": "node ./src/utils/reporter.ts",
+    "single": "cucumber-js features/**/*.feature --require-module ts-node/register --require 'src/step_definitions/**/*.ts' --tags='@Single' --format 'progress' -f json:./reports/cucumber_report.cucumber",
+    "tests.inv": "cucumber-js --parallel 2 --order random features/**/*.feature --require-module ts-node/register --require 'src/step_definitions/**/*.ts' --tags='@Parallel and not @Wip and not @Extended' --format 'progress' -f json:./reports/cucumber_report.cucumber",
+    "fast": "SLOWMO=0 yarn tests",
+    "tests": "cucumber-js --parallel 3 --order random features/**/*.feature --require-module ts-node/register --require 'src/step_definitions/**/*.ts' --fail-fast --tags='not @Wip and not @Extended' --format 'progress' -f json:./reports/cucumber_report.cucumber"
+  },
+  "dependencies": {
+    "@nestjs/typeorm": "^7.1.5",
+    "chai": "^4.2.0",
+    "cucumber": "^6.0.5",
+    "cucumber-html-reporter": "^5.3.0",
+    "dotenv": "^8.2.0",
+    "playwright": "^1.6.2",
+    "ts-node": "^9.1.1",
+    "typeorm": "^0.2.29",
+    "typescript": "^3.9.7",
+    "winston": "^3.3.3"
+  }
+}
