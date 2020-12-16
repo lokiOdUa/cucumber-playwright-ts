@@ -14,7 +14,7 @@ yarn install
 yarn single
 yarn report
 ```
-Сценарии находятся в `features/dummy/PetStore.feature`
+Сценарии находятся в `features/petstore/PetStore.feature`
 
 Скришноты и отчёт о выполнении тестов помещаюится в `./reports/*`
 
